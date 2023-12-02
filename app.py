@@ -5,10 +5,11 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 app = Flask(__name__)
-
 @app.route("/")
 def index():
-    return render_template("index.html")
+    c = get_db_connection()
+    products = c.execute('select * from products where  productid not in (1,2)').fetchall()
+    return render_template('index.html',products=products)
 @app.route("/about")
 def about():
     return render_template("about.html")
