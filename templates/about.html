@@ -1,51 +1,167 @@
-{% extends "layout.html" %}
-{% block aboutContent %}
-    <div class="about-section">
-        <h1>About Us</h1>
-        <p>Some text about who we are and what we do.</p>
-        <p>Resize the browser window to see that this page is responsive by the way.</p>
-      </div>
-      
-      <h2 style="text-align:center">Our Team</h2>
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="{{url_for('static', filename='/images/Klodi.jpg')}}"" alt="Klodi Pepa" style="width:100%">
-            <div class="container">
-              <h2>Klodi Pepa</h2>
-              <p class="title">CEO & Founder</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>jane@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
-            <div class="container">
-              <h2>Mike Ross</h2>
-              <p class="title">Art Director</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>mike@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="/w3images/team3.jpg" alt="John" style="width:100%">
-            <div class="container">
-              <h2>John Doe</h2>
-              <p class="title">Designer</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>john@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      </div>
+{% extends "layout.html" %} {% block aboutContent %}
+<div
+  class="about-section"
+  style="
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: #474e5d;
+    color: white;
+  "
+>
+  <h1>About Us</h1>
+  <p>IronSharp Albania</p>
+  <p>
+    Developing youth in strength & skill but more importantly into a strong team; a tightknit community where iron sharpens iron to form strong Godly men.
+  </p>
+</div>
 
-{%endblock%}
+<h2 style="text-align: center">Our Team</h2>
+<div
+  class="row"
+  style="display: flex; flex-wrap: wrap; justify-content: space-around"
+>
+  <!-- Team member 1 -->
+  <div class="column" style="flex: 0 0 calc(33.33% - 16px); margin: 8px">
+    <div
+      class="card"
+      style="
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <img
+        src="{{url_for('static', filename='/images/Klodi.jpg')}}"
+        alt="Klodi Pepa"
+        style="width: 100%; height: 200px; object-fit: contain"
+      />
+      <div class="container" style="padding: 0 16px">
+        <h2>Klodi Pepa</h2>
+        <p class="title" style="color: grey">CEO & Founder</p>
+        <p>Phone number: +355 69 808 1002</p>
+        <p>klodipepa@gmail.com</p>
+        <p>
+          <button
+            class="button"
+            style="
+              background-color: #f08d49;
+              color: white;
+              border: none;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+            "
+          >
+            Contact
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team member 2 -->
+  <div class="column" style="flex: 0 0 calc(33.33% - 16px); margin: 8px">
+    <div
+      class="card"
+      style="
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <img
+        src="{{url_for('static', filename='/images/Jesse.jpg')}}"
+        alt="Jesse Scott"
+        style="width: 100%; height: 200px; object-fit: contain"
+      />
+      <div class="container" style="padding: 0 16px">
+        <h2>Jesse Scott</h2>
+        <p class="title" style="color: grey">CEO & Founder</p>
+        <p>Phone Number: +235 34 234 2345</p>
+          
+        </p>
+        <p>scottjesse@gmail.com</p>
+        <p>
+          <button
+            class="button"
+            style="
+              background-color: #f08d49;
+              color: white;
+              border: none;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+            "
+          >
+            Contact
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team member 3 -->
+  <div class="column" style="flex: 0 0 calc(33.33% - 16px); margin: 8px">
+    <div
+      class="card"
+      style="
+        border: 1px solid #eee;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <img
+        src="{{url_for('static', filename='/images/Markilian.png')}}"
+        alt="Markilian Kollcinaku"
+        style="width: 100%; height: 200px; object-fit: contain"
+      />
+      <div class="container" style="padding: 0 16px">
+        <h2>Markilian Kollcinaku</h2>
+        <p class="title" style="color: grey">CEO & Founder</p>
+        <p>Phone Number: +355 69 291 7344</p>
+        <p>markelien@icloud.com</p>
+        <p>
+          <button
+            class="button"
+            style="
+              background-color: #f08d49;
+              color: white;
+              border: none;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+            "
+          >
+            Contact
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

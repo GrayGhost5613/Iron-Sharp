@@ -9,10 +9,10 @@ app = Flask(__name__)
 def index():
     c = get_db_connection()
     products = c.execute('select * from products where  productid not in (1,2)').fetchall()
-    return render_template('index.html',products=products)
+    return render_template('index.html',products=products,active_page='home')
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html",active_page='about')
 
 @app.route("/login")
 def login():
@@ -20,8 +20,9 @@ def login():
     posts = conn.execute('SELECT * FROM user').fetchall()
     print(posts)
     #conn.close()
-    return render_template('login.html', posts=posts)
-
-
+    return render_template('login.html', posts=posts,active_page='login')
+@app.route("/cart")
+def cart():
+     return render_template('cart.html',active_page='cart')
 if __name__ == "__main__":
     app.run(debug=True)

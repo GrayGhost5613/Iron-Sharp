@@ -1,84 +1,88 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/main.css') }}">
-</head>
-<body>
-    <div class="topnav">
-        <a class="active" href="/">Home</a>
-        <a href="about">About</a>
-        <input type="text" placeholder="Search..">
-        <a href="login">Login</a>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/main.css') }}"
+    />
+  </head>
+  <body>
+    <div
+      class="topnav"
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
+      <div>
+        <a
+          class="{{ 'active' if active_page == 'home' else '' }}"
+          href="/"
+          style="{{ 'background-color:#f08d49; color:white;' if active_page == 'home' else '' }}"
+          >Home</a
+        >
+        <a
+          class="{{ 'active' if active_page == 'about' else '' }}"
+          href="about"
+          style="{{ 'background-color:#f08d49; color:white;' if active_page == 'about' else '' }}"
+          >About</a
+        >
+        <a
+          class="{{ 'active' if active_page == 'login' else '' }}"
+          href="login"
+          style="{{ 'background-color:#f08d49; color:white;' if active_page == 'login' else '' }}"
+          >Login</a
+        >
       </div>
 
-    {% block homeContent %}
-    {% endblock %}
+      <div
+        style="display: flex; align-items: center; justify-content: flex-end"
+      >
+        <input
+          type="text"
+          placeholder="Search.."
+          style="margin: 0; height: 100%"
+        />
+        <a
+          href="/cart"
+          class="fa fa-cart-plus"
+          style="
+            color: inherit;
+            text-decoration: none;
+            padding-left: 10px;
+            font-size: 1.5em;
+          "
+        ></a>
+      </div>
+    </div>
 
-    {% block aboutContent %}
-    {% endblock %}
-<!-- 
-<h1>Available products</h1>
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/242216217_2671212376516437_2808501322171127848_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ywZPUiA7ybkAX_sNU7n&_nc_ht=scontent-ord5-2.xx&oh=00_AfCO116IhzmQdr2A1Syi4e8TQ4Au8ttBry5ksBrCKQD2nw&oe=6553E826" alt="Denim Jeans" style="width:100%">
-      <h1>Tailored Jeans</h1>
-      <p class="price">$19.99</p>
-      <p>Some text about the jeans..</p>
-      <p><button>Add to Cart</button></p>
+    {% block homeContent %} {% endblock %} 
+    {% block aboutContent %} {% endblock%}
+    {% block loginContent %} {% endblock%}
+    {% block cartContent %} {% endblock%}
+  </body>
+  <!-- Footer -->
+  <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
+    <h5>Find Us On</h5>
+    <div class="w3-xlarge w3-padding-16">
+      <a href="https://www.facebook.com/ironsharpalbania/" target="_blank"
+        ><i class="fa fa-facebook-official w3-hover-opacity"></i
+      ></a>
+      <a
+        href="https://www.instagram.com/ironsharpalbania/?hl=en"
+        target="_blank"
+        ><i class="fa fa-instagram w3-hover-opacity"></i
+      ></a>
     </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/242216217_2671212376516437_2808501322171127848_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ywZPUiA7ybkAX_sNU7n&_nc_ht=scontent-ord5-2.xx&oh=00_AfCO116IhzmQdr2A1Syi4e8TQ4Au8ttBry5ksBrCKQD2nw&oe=6553E826" alt="Denim Jeans" style="width:100%">
-      <h1>Tailored Jeans</h1>
-      <p class="price">$19.99</p>
-      <p>Some text about the jeans..</p>
-      <p><button>Add to Cart</button></p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/242216217_2671212376516437_2808501322171127848_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ywZPUiA7ybkAX_sNU7n&_nc_ht=scontent-ord5-2.xx&oh=00_AfCO116IhzmQdr2A1Syi4e8TQ4Au8ttBry5ksBrCKQD2nw&oe=6553E826" alt="Denim Jeans" style="width:100%">
-      <h1>Tailored Jeans</h1>
-      <p class="price">$19.99</p>
-      <p>Some text about the jeans..</p>
-      <p><button>Add to Cart</button></p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/242216217_2671212376516437_2808501322171127848_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ywZPUiA7ybkAX_sNU7n&_nc_ht=scontent-ord5-2.xx&oh=00_AfCO116IhzmQdr2A1Syi4e8TQ4Au8ttBry5ksBrCKQD2nw&oe=6553E826" alt="Denim Jeans" style="width:100%">
-      <h1>Tailored Jeans</h1>
-      <p class="price">$19.99</p>
-      <p>Some text about the jeans..</p>
-      <p><button>Add to Cart</button></p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/242216217_2671212376516437_2808501322171127848_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=ywZPUiA7ybkAX_sNU7n&_nc_ht=scontent-ord5-2.xx&oh=00_AfCO116IhzmQdr2A1Syi4e8TQ4Au8ttBry5ksBrCKQD2nw&oe=6553E826" alt="Denim Jeans" style="width:100%">
-      <h1>Tailored Jeans</h1>
-      <p class="price">$19.99</p>
-      <p>Some text about the jeans..</p>
-      <p><button>Add to Cart</button></p>
-    </div>
-  </div>
-</div> -->
-
-</body>
-<!-- Footer -->
-<footer class="w3-container w3-center w3-opacity w3-margin-bottom">
-  <h5>Find Us On</h5>
-  <div class="w3-xlarge w3-padding-16">
-    <a href="https://www.facebook.com/ironsharpalbania/" target="_blank" ><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
-    <a href="https://www.instagram.com/ironsharpalbania/?hl=en" target="_blank" ><i class="fa fa-instagram w3-hover-opacity"></i></a>
-  </div
-</footer>
+  </footer>
 </html>
