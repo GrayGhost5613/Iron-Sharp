@@ -1,3 +1,84 @@
 {% extends "layout.html" %} {% block cartContent %}
-<h1>Cart</h1>
+<div id="cart">
+  {% if cart_products %}
+  <h2>Your Cart</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in cart_products %} {% if product %}
+      <tr>
+        <td>{{ product.title }}</td>
+        <td>{{ product.product_description }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <div style="display: flex; align-items: center">
+            <form
+              method="POST"
+              action="{{ url_for('decrease_quantity') }}"
+              style="margin-right: 10px"
+            >
+              <input
+                type="hidden"
+                name="product_id"
+                value="{{ product.productid }}"
+              />
+              <input type="submit" value="-" />
+            </form>
+            <span>
+              {% if product.productid|string in session['cart'] %} {{
+              session['cart'][product.productid|string] }} {% else %} 0 {% endif
+              %}
+            </span>
+            <form
+              method="POST"
+              action="{{ url_for('increase_quantity') }}"
+              style="margin-left: 10px"
+            >
+              <input
+                type="hidden"
+                name="product_id"
+                value="{{ product.productid }}"
+              />
+              <input type="submit" value="+" />
+            </form>
+          </div>
+        </td>
+        <td>
+          <form method="POST" action="{{ url_for('remove_from_cart') }}">
+            <input
+              type="hidden"
+              name="product_id"
+              value="{{ product.productid }}"
+            />
+            <input
+              type="submit"
+              value="Remove"
+              style="
+                background-color: red;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+              "
+            />
+          </form>
+        </td>
+      </tr>
+      {% endif %} {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('checkout') }}" class="btn btn-success">Checkout</a>
+  {% else %}
+  <h2>Your cart is empty</h2>
+  <a href="{{ url_for('index') }}" class="btn btn-primary">Continue Shopping</a>
+  {% endif %}
+</div>
+
 {% endblock %}
