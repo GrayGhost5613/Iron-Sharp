@@ -40,10 +40,6 @@ def add_to_cart():
     session['cart'] = cart
     flash('Product added to cart')
     return redirect(request.referrer)
-@app.route("/clear_cart_and_redirect")
-def clear_cart_and_redirect():
-    session.clear()
-    return redirect(request.referrer)
 @app.route('/increase_quantity', methods=['POST'])
 def increase_quantity():
     product_id = str(request.form.get('product_id'))   
